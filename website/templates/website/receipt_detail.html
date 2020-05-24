@@ -1,0 +1,15 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+
+		<div>
+
+			<h2>{{ receipt.title }}</h2>
+			<p>{{ receipt.description|linebreaksbr }}</p>				
+			{% for r_i in receipt.receiptingredient_set.all %}
+			<p>{{ r_i.ingredient }}: {{ r_i.quantity }} {{ r_i.unit }}</p>
+			{% endfor %}	
+		</div>
+	
+
+{% endblock %}

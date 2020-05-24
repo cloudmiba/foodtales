@@ -1,0 +1,17 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+	{% for receipt in receipts %}
+
+		<div>
+			<p>published: {{ receipt.published_date }}</p>
+			<h2><a href="{% url 'receipt_detail' pk=receipt.pk %}">{{ receipt.title }}</a></h2>
+			<p>{{ receipt.description|linebreaksbr }}</p>
+				
+			{% for r_i in receipt.receiptingredient_set.all %}
+			<p>{{ r_i.ingredient }}: {{ r_i.quantity }} {{ r_i.unit }}</p>
+			{% endfor %}	
+		</div>
+	
+	{% endfor %}
+{% endblock %}
